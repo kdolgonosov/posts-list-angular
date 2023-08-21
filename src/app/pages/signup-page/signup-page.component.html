@@ -1,0 +1,45 @@
+<div class="container">
+  <form [formGroup]="form" class="form" (ngSubmit)="signUp()">
+    <p class="form__title">Регистрация</p>
+    <mat-form-field class="full-width">
+      <mat-label>Email</mat-label>
+      <input
+        type="email"
+        matInput
+        formControlName="email"
+        placeholder="ivan@mail.ru"
+      />
+      <mat-error *ngIf="email.hasError('email') && !email.hasError('required')">
+        Введите корректный email
+      </mat-error>
+      <mat-error *ngIf="email.hasError('required')">
+        Email является обязательным полем
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Пароль</mat-label>
+      <input
+        type="password"
+        matInput
+        formControlName="password"
+        placeholder="Пароль"
+      />
+      <mat-error *ngIf="!password.hasError('minLength')">
+        Пароль должен содержать от 6 до 15 символов
+      </mat-error>
+    </mat-form-field>
+    <button
+      mat-raised-button
+      class="submit-btn"
+      type="submit"
+      [disabled]="form.invalid"
+    >
+      Зарегистрироваться
+    </button>
+    <p class="form__login-hint">
+      Уже зарегистрированы?
+      <a routerLink="/login">Войти</a>
+    </p>
+  </form>
+</div>

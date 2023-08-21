@@ -1,0 +1,10 @@
+<mat-toolbar class="nav">
+  <a
+    routerLink="/posts"
+    routerLinkActive="active"
+    [routerLinkActiveOptions]="{ exact: true }"
+    class="nav__link-to-posts"
+    >Все посты</a
+  >
+  <a class="nav__logout" (click)="logOut()">Выйти</a>
+</mat-toolbar>
